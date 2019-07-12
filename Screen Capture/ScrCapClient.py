@@ -3,12 +3,12 @@ from mss import mss
 from multiprocessing.connection import Client
 
 address = ('localhost', 6000)
-conn = Client(address, authkey=b'secret password')
+conn = Client(address, authkey=b'password')
+print("Screen Capture started")
 while(True):
-    print("producer")
-    bbox = {'top': 100, 'left': 0, 'width': 400, 'height': 300}
+    bbox = {'top': 0, 'left': 0, 'width': 800, 'height': 600}
     sct = mss()
-    while 1:
+    while True:
         sct_img = sct.grab(bbox)
         conn.send(sct_img)
         
